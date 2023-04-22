@@ -2,18 +2,34 @@
 // problem-url: https://codeforces.com/contest/1820/problem/A
 #include <algorithm>
 #include <iostream>
+#include <stack>
 #include <vector>
 
 using namespace std;
 
 void solve() {
-  cout << 5 << endl;
-  cout << 5 << endl;
-  cout << 1 << endl;
-  cout << 1 << endl;
-  cout << 0 << endl;
-  cout << 3 << endl;
-  cout << 2 << endl;
+  int n;
+  cin >> n;
+  for (int i = 0; i < n; i++) {
+
+    string s;
+    cin >> s;
+    char last = s[0];
+    char curr = s[0];
+    int counter = s[0] == '^' && s.size() != 1 ? 0 : 1;
+
+    for (int j = 1; j < s.size(); j++) {
+      curr = s[j];
+      if (curr == '_' && last == '_') {
+        counter++;
+      }
+      last = curr;
+    }
+    if (curr == '_') {
+      counter++;
+    };
+    cout << counter << endl;
+  }
 }
 
 int main() {
